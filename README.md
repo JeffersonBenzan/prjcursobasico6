@@ -4,15 +4,9 @@ Android project that will let you know if you are in your ideal weight according
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+If you are interested in trying the code of our application, you can make a clone to the repository.
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+If you want to contribute to the application as a contributor to the project, make a fork. Each time you are going to perform a pull request, you must specify correctly in the description of the same that was done in this request.
 
 ### Installing
 
@@ -31,26 +25,6 @@ until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 

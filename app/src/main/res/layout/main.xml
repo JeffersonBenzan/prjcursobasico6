@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jean.prj_cursobasico_6.MainActivity">
+    android:gravity="center_horizontal"
+    android:paddingTop="50dp">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/imageViewHeader_Description"
+        android:src="@drawable/bmi_icon"
+        android:scaleType="centerInside"/>
+    <TextView
+        android:id="@+id/textViewTittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/labelEstatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/editTextEstatura"
+                android:text="@string/textViewEstatura_Text"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/editTextEstatura"
+                android:inputType="text"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/spinnerSelectUnitEstatura"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp">
+        <TextView
+            android:id="@+id/labelPeso"
+            android:labelFor="@id/editTextPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewPeso_Text"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/editTextPeso"
+            android:inputType="text"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/spinnerSelectUnitPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <Button
+        android:theme="@style/AppTheme.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonSend_Text"/>
+
+</LinearLayout>

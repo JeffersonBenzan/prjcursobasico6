@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(browserIntent);
                 break;
             case R.id.item_close:
+                finishAffinity();
                 break;
         }
 

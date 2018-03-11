@@ -2,6 +2,16 @@ package com.example.jean.prj_cursobasico_6;
 
 public class ImcCalculator {
 
+    public enum PesoUnit{
+        Libra,
+        Kilogramo
+    }
+
+    public enum EstaturaUnit{
+        Metro,
+        Pies
+    }
+
     //Enumeracion que indica el estado de una persona segun su IMC
     public enum IndiceMasaCorporal {
         PesoInsuficiente,
@@ -49,16 +59,14 @@ public class ImcCalculator {
     }
 
     //Segun la estatura y masa, calcular el IMC.
-    //El parametro conversion sirve para convertir la masa y el peso en kilogramos
-    // y en metros respectivamente si estos se pasaron en libras y pies.
-    public static double calcularImc(double masa, double estatura, boolean conversion){
+    public static double calcularImc(double masa, double estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
 
-        //Hacemos conversion si es necesaria de libra en kilogramos y de pies a metros
-        if (conversion) {
+        if (pesoUnit == PesoUnit.Libra){
             masa = masa * 0.453592;
+        }
+        if (estaturaUnit == EstaturaUnit.Pies){
             estatura = estatura * 0.3048;
         }
-
 
         return masa / Math.pow(estatura, 2);
     }
@@ -91,20 +99,5 @@ public class ImcCalculator {
             return IndiceMasaCorporal.ObecidadExtrema.getName();
         }
     }
-
-    /*public static void main (String [] args){
-
-        //Masa en libras y estatura en pies
-        double masa = 160;
-        double estatura = 5.7;
-
-        double imcCalc = calcularImc(masa, estatura, true);
-        System.out.println("Tu IMC es: "+imcCalc);
-
-        //Indicamos en que rango de peso estas segun tu IMC calculado
-        String imcFinal = indicarImc(imcCalc);
-
-        System.out.println("Tienes "+imcFinal.toLowerCase());
-    }*/
 
 }

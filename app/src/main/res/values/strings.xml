@@ -2,4 +2,9 @@
     <string name="app_name">Mide tu Peso App</string>
     <string name="menu_about">About</string>
     <string name="menu_close">Close</string>
+    
+    <string name="imageViewHeader_Description">Hello its me</string>
+    <string name="textViewEstatura_Text">Estatura: </string>
+    <string name="textViewPeso_Text">Peso: </string>
+    <string name="buttonSend_Text">Enviar</string>
 </resources>

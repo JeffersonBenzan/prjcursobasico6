@@ -45,16 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             double ImcCalculado = ImcCalculator.calcularImc(masa,estatura,estaturaUnit,pesoUnit);
 
-            String resultado = ImcCalculator.indicarImc(ImcCalculado);
+            String mensaje = "Tu Indice de Masa Corporal es: "
+                    + Double.toString(utilities.redondear(ImcCalculado))
+                    + System.getProperty("line.separator")
+                    + "Estas en " + ImcCalculator.indicarImc(ImcCalculado).toLowerCase();
 
-            StringBuilder sb = new StringBuilder();
-            sb.append("Tu Indice de Masa Corporal es: ");
-            sb.append(Double.toString(utilities.round(ImcCalculado, 2)));
-            sb.append(System.getProperty("line.separator"));
-            sb.append("Estas en ");
-            sb.append(resultado.toLowerCase());
-
-            alertDialogCustom("Estos son tus resultados:",sb.toString());
+            alertDialogCustom("Estos son tus resultados:", mensaje);
         }
         catch (Exception ex){
             alertDialogCustom("Campos Vacios",

@@ -1,6 +1,6 @@
 package com.example.jean.prj_cursobasico_6;
 
-public class ImcCalculator {
+class ImcCalculator {
 
     public enum PesoUnit{
         Libras,
@@ -59,7 +59,7 @@ public class ImcCalculator {
     }
 
     //Segun la estatura y masa, calcular el IMC.
-    public static double calcularImc(double masa, double estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
+    static double calcularImc(double masa, double estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
 
         if (pesoUnit == PesoUnit.Libras){
             masa = masa * 0.453592;
@@ -73,7 +73,7 @@ public class ImcCalculator {
 
 
     //Segun el Indice de masa corporal suministrado, decir en que rango se encuentra la persona.
-    public static String indicarImc(double Imc){
+    static String indicarImc(double Imc){
         if (Imc < 18.5){
             return IndiceMasaCorporal.PesoInsuficiente.getName();
         }

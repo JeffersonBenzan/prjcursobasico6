@@ -1,7 +1,10 @@
 package com.example.jean.prj_cursobasico_6;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +13,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,16 +36,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        double masa = Double.parseDouble(mEditTextPeso.getText().toString());
-        double estatura = Double.parseDouble(mEditTextEstatura.getText().toString());
-        ImcCalculator.PesoUnit pesoUnit = ImcCalculator.PesoUnit.valueOf(mSpinnerPeso.getSelectedItem().toString());
-        ImcCalculator.EstaturaUnit estaturaUnit = ImcCalculator.EstaturaUnit.valueOf(mSpinnerEstatura.getSelectedItem().toString());
 
-        double ImcCalculado = ImcCalculator.calcularImc(masa,estatura,estaturaUnit,pesoUnit);
+        try {
+            double masa = Double.parseDouble(mEditTextPeso.getText().toString());
+            double estatura = Double.parseDouble(mEditTextEstatura.getText().toString());
+            ImcCalculator.PesoUnit pesoUnit = ImcCalculator.PesoUnit.valueOf(mSpinnerPeso.getSelectedItem().toString());
+            ImcCalculator.EstaturaUnit estaturaUnit = ImcCalculator.EstaturaUnit.valueOf(mSpinnerEstatura.getSelectedItem().toString());
 
-        String resultado = ImcCalculator.indicarImc(ImcCalculado);
+            double ImcCalculado = ImcCalculator.calcularImc(masa,estatura,estaturaUnit,pesoUnit);
 
-        Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
+            String resultado = ImcCalculator.indicarImc(ImcCalculado);
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("Tu Indice de Masa Corporal es: ");
+            sb.append(Double.toString(utilities.round(ImcCalculado, 2)));
+            sb.append(System.getProperty("line.separator"));
+            sb.append("Estas en ");
+            sb.append(resultado.toLowerCase());
+
+            alertDialogCustom("Estos son tus resultados:",sb.toString());
+        }
+        catch (Exception ex){
+            alertDialogCustom("Campos Vacios",
+                    "Todos los campos necesitan estar llenos para poder calcular tu Indice de Masa Corporal");
+        }
+
     }
 
     @Override
@@ -84,5 +101,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSpinnerPeso.setAdapter(adapterPeso);
         mSpinnerEstatura.setAdapter(adapterEstatura);
+    }
+
+    private void alertDialogCustom(String tittle,String message){
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        builder.setTitle(tittle)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
     }
 }

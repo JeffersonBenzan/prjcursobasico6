@@ -3,12 +3,12 @@ package com.example.jean.prj_cursobasico_6;
 public class ImcCalculator {
 
     public enum PesoUnit{
-        Libra,
-        Kilogramo
+        Libras,
+        Kilogramos
     }
 
     public enum EstaturaUnit{
-        Metro,
+        Metros,
         Pies
     }
 
@@ -61,7 +61,7 @@ public class ImcCalculator {
     //Segun la estatura y masa, calcular el IMC.
     public static double calcularImc(double masa, double estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
 
-        if (pesoUnit == PesoUnit.Libra){
+        if (pesoUnit == PesoUnit.Libras){
             masa = masa * 0.453592;
         }
         if (estaturaUnit == EstaturaUnit.Pies){

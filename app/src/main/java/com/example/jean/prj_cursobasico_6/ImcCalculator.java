@@ -77,22 +77,22 @@ class ImcCalculator {
         if (Imc < 18.5){
             return IndiceMasaCorporal.PesoInsuficiente.getName();
         }
-        else if (Imc >= 18.5 && Imc < 24.9){
+        else if (Imc >= 18.5 && Imc < 25){
             return IndiceMasaCorporal.PesoNormal.getName();
         }
-        else if (Imc >= 25 && Imc < 26.9){
+        else if (Imc >= 25 && Imc < 27){
             return IndiceMasaCorporal.Sobrepeso.getName();
         }
-        else if (Imc >= 27 && Imc < 29.9){
+        else if (Imc >= 27 && Imc < 30){
             return IndiceMasaCorporal.Preobecidad.getName();
         }
-        else if (Imc >= 30 && Imc < 34.9){
+        else if (Imc >= 30 && Imc < 35){
             return IndiceMasaCorporal.ObecidadLeve.getName();
         }
-        else if (Imc >= 35 && Imc < 39.9){
+        else if (Imc >= 35 && Imc < 40){
             return IndiceMasaCorporal.ObecidadModerada.getName();
         }
-        else if (Imc >= 25 && Imc < 26.9){
+        else if (Imc >= 25 && Imc < 27){
             return IndiceMasaCorporal.ObecidadMorbida.getName();
         }
         else {

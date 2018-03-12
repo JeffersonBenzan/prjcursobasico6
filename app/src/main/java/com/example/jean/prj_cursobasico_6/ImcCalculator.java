@@ -92,7 +92,7 @@ class ImcCalculator {
         else if (Imc >= 35 && Imc < 40){
             return IndiceMasaCorporal.ObecidadModerada.getName();
         }
-        else if (Imc >= 25 && Imc < 27){
+        else if (Imc >= 40 && Imc < 50){
             return IndiceMasaCorporal.ObecidadMorbida.getName();
         }
         else {

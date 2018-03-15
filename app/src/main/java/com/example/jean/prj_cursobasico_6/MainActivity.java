@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         try {
             double masa = Double.parseDouble(mEditTextPeso.getText().toString());
-            double estatura = Double.parseDouble(mEditTextEstatura.getText().toString());
+            String estatura = mEditTextEstatura.getText().toString();
             ImcCalculator.PesoUnit pesoUnit = ImcCalculator.PesoUnit.valueOf(mSpinnerPeso.getSelectedItem().toString());
             ImcCalculator.EstaturaUnit estaturaUnit = ImcCalculator.EstaturaUnit.valueOf(mSpinnerEstatura.getSelectedItem().toString());
 

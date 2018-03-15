@@ -59,16 +59,20 @@ class ImcCalculator {
     }
 
     //Segun la estatura y masa, calcular el IMC.
-    static double calcularImc(double masa, double estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
+    static double calcularImc(double masa, String estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
+
+        Double estaturaDouble = Double.parseDouble(estatura);
 
         if (pesoUnit == PesoUnit.Libras){
-            masa = masa * 0.453592;
+
+            masa = utilities.LibraAKilogramo(masa);
         }
         if (estaturaUnit == EstaturaUnit.Pies){
-            estatura = estatura * 0.3048;
+
+            estaturaDouble = utilities.PiesYPulgadasAMetros(estatura);
         }
 
-        return masa / Math.pow(estatura, 2);
+        return masa / Math.pow(estaturaDouble, 2);
     }
 
 

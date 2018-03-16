@@ -44,11 +44,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ImcCalculator.EstaturaUnit estaturaUnit = ImcCalculator.EstaturaUnit.valueOf(mSpinnerEstatura.getSelectedItem().toString());
 
             double ImcCalculado = ImcCalculator.calcularImc(masa,estatura,estaturaUnit,pesoUnit);
+            String MensajeRecomendacion = ImcCalculator.calcularRecomendacion(masa,estatura,estaturaUnit,pesoUnit);
 
             String mensaje = "Tu Indice de Masa Corporal es: "
-                    + Double.toString(utilities.redondear(ImcCalculado))
                     + System.getProperty("line.separator")
-                    + "Estas en " + ImcCalculator.indicarImc(ImcCalculado).toLowerCase();
+                    + Double.toString(utilities.redondear(ImcCalculado))
+                    + System.getProperty("line.separator") + System.getProperty("line.separator")
+                    + "Estas en " + ImcCalculator.indicarImc(ImcCalculado).toLowerCase()
+                    + System.getProperty("line.separator") + System.getProperty("line.separator")
+                    + MensajeRecomendacion;
 
             alertDialogCustom("Estos son tus resultados:", mensaje);
         }

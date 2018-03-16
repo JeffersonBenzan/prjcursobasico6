@@ -21,7 +21,8 @@ class ImcCalculator {
         ObecidadLeve,
         ObecidadModerada,
         ObecidadMorbida,
-        ObecidadExtrema;
+        ObecidadExtrema,
+        FueraDeRango;
 
         String getName(){
 
@@ -51,6 +52,9 @@ class ImcCalculator {
                     break;
                 case ObecidadExtrema:
                     name = "OBECIDAD EXTREMA";
+                    break;
+                case FueraDeRango:
+                    name = "Fuera De Rango";
                     break;
             }
 
@@ -99,9 +103,55 @@ class ImcCalculator {
         else if (Imc >= 40 && Imc < 50){
             return IndiceMasaCorporal.ObecidadMorbida.getName();
         }
-        else {
+        else if (Imc > 50){
             return IndiceMasaCorporal.ObecidadExtrema.getName();
+        }  else {
+            return IndiceMasaCorporal.FueraDeRango.getName();
         }
+
     }
 
+    //Recomendacion para estar en peso normal
+    static String calcularRecomendacion(double masa, String estatura, EstaturaUnit estaturaUnit, PesoUnit pesoUnit){
+
+        Double estaturaDouble = Double.parseDouble(estatura);
+
+        if (pesoUnit == PesoUnit.Libras){
+
+            masa = utilities.LibraAKilogramo(masa);
+        }
+        if (estaturaUnit == EstaturaUnit.Pies){
+
+            estaturaDouble = utilities.PiesYPulgadasAMetros(estatura);
+        }
+
+        double imc = masa / Math.pow(estaturaDouble, 2);
+        double masaRecomendada;
+
+        if (imc >= 25)
+        {
+            masaRecomendada = Math.abs((24.9 * Math.pow(estaturaDouble, 2)) - masa);
+            masaRecomendada = utilities.redondear(masaRecomendada);
+            if (pesoUnit == PesoUnit.Libras)
+            {
+                masaRecomendada = utilities.KilogramoALibra(masaRecomendada);
+                masaRecomendada = utilities.redondear(masaRecomendada);
+            }
+            return "¡DEJE LOS CHIMIS Y LA MALA VIDA!, baje " + masaRecomendada + " "+pesoUnit+" para ponerse fit";
+        } else if (imc < 18.5)
+        {
+            masaRecomendada = Math.abs(masa - (18.5 * Math.pow(estaturaDouble, 2)));
+            masaRecomendada = utilities.redondear(masaRecomendada);
+            if (pesoUnit == PesoUnit.Libras)
+            {
+                masaRecomendada = utilities.KilogramoALibra(masaRecomendada);
+                masaRecomendada = utilities.redondear(masaRecomendada);
+            }
+            return "¡PROGRAME MENOS Y COMA MAS!, suba " + masaRecomendada + " "+pesoUnit+" para ponerse fit";
+        }else
+        {
+            return "Sigue asi campeon!";
+        }
+
+    }
 }

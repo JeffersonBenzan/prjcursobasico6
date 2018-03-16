@@ -24,4 +24,9 @@ class utilities {
 
         return masa * 0.453592;
     }
+
+    static double KilogramoALibra(Double masa){
+
+        return masa / 0.453592;
+    }
 }

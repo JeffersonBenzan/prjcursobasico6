@@ -8,8 +8,9 @@ class ImcCalculator {
     }
 
     public enum EstaturaUnit{
-        Metros,
-        Pies
+        Pies,
+        Metros
+
     }
 
     //Enumeracion que indica el estado de una persona segun su IMC

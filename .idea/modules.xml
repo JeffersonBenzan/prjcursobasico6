@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pjrcursobasico6.iml" filepath="$PROJECT_DIR$/pjrcursobasico6.iml" />
       <module fileurl="file://D:\AlticeMobileDevelopmentCertification\ModuleOneAndroidBasic\SecondDay\prjcursobasico6\pjrcursobasico6.iml" filepath="D:\AlticeMobileDevelopmentCertification\ModuleOneAndroidBasic\SecondDay\prjcursobasico6\pjrcursobasico6.iml" />
-      <module fileurl="file://$PROJECT_DIR$/prjcursobasico6.iml" filepath="$PROJECT_DIR$/prjcursobasico6.iml" />
+      <module fileurl="file://A:\Proyects\Proyectos de Cursos\pjrcursobasico6\prjcursobasico6.iml" filepath="A:\Proyects\Proyectos de Cursos\pjrcursobasico6\prjcursobasico6.iml" />
     </modules>
   </component>
 </project>

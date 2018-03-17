@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import ImcCalculator.ImcCalculator;
+import Utilities.Utilities;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,25 +40,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
         try {
-            double masa = Double.parseDouble(mEditTextPeso.getText().toString());
-            String estatura = mEditTextEstatura.getText().toString();
-            ImcCalculator.PesoUnit pesoUnit = ImcCalculator.PesoUnit.valueOf(mSpinnerPeso.getSelectedItem().toString());
-            ImcCalculator.EstaturaUnit estaturaUnit = ImcCalculator.EstaturaUnit.valueOf(mSpinnerEstatura.getSelectedItem().toString());
+            double Masa = Double.parseDouble(mEditTextPeso.getText().toString());
+            String Estatura = mEditTextEstatura.getText().toString();
+            ImcCalculator.PesoUnit PesoUnit = ImcCalculator.PesoUnit.valueOf(mSpinnerPeso.getSelectedItem().toString());
+            ImcCalculator.EstaturaUnit EstaturaUnit = ImcCalculator.EstaturaUnit.valueOf(mSpinnerEstatura.getSelectedItem().toString());
 
-            double ImcCalculado = ImcCalculator.calcularImc(masa,estatura,estaturaUnit,pesoUnit);
-            String MensajeRecomendacion = ImcCalculator.calcularRecomendacion(masa,estatura,estaturaUnit,pesoUnit);
+            double ImcCalculado = ImcCalculator.CalcularImc(Masa,Estatura,EstaturaUnit,PesoUnit);
+            String MensajeRecomendacion = ImcCalculator.CalcularRecomendacion(Masa,Estatura,EstaturaUnit,PesoUnit);
 
-            String mensaje = "Tu Indice de Masa Corporal es: "
+            String Mensaje = "Tu Indice de Masa Corporal es: "
                     + System.getProperty("line.separator")
-                    + Double.toString(utilities.redondear(ImcCalculado))
+                    + Double.toString(Utilities.Redondear(ImcCalculado))
                     + System.getProperty("line.separator") + System.getProperty("line.separator")
-                    + "Estas en " + ImcCalculator.indicarImc(ImcCalculado).toLowerCase()
+                    + "Estas en " + ImcCalculator.IndicarImc(ImcCalculado).toLowerCase()
                     + System.getProperty("line.separator") + System.getProperty("line.separator")
                     + MensajeRecomendacion;
 
-            alertDialogCustom("Estos son tus resultados:", mensaje);
+            alertDialogCustom("Estos son tus resultados:", Mensaje);
         }
         catch (Exception ex){
+            //mEditTextEstatura.setError("Este campo es requerido");
             alertDialogCustom("Campos Vacios",
                     "Todos los campos necesitan estar llenos para poder calcular tu Indice de Masa Corporal");
         }
@@ -75,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (item.getItemId()){
             case R.id.item_about:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/JeanCCV/prjcursobasico6"));
-                startActivity(browserIntent);
+                Intent BrowserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/JeanCCV/prjcursobasico6"));
+                startActivity(BrowserIntent);
                 break;
             case R.id.item_close:
                 finishAffinity();
@@ -87,39 +90,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void fillSpinners(){
-        ArrayAdapter<ImcCalculator.EstaturaUnit> adapterEstatura
+        ArrayAdapter<ImcCalculator.EstaturaUnit> AdapterEstatura
                 = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, ImcCalculator.EstaturaUnit.values());
 
-        ArrayAdapter<ImcCalculator.PesoUnit> adapterPeso
+        ArrayAdapter<ImcCalculator.PesoUnit> AdapterPeso
                 = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, ImcCalculator.PesoUnit.values());
 
-        adapterEstatura.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapterPeso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        AdapterEstatura.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        AdapterPeso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        mSpinnerPeso.setAdapter(adapterPeso);
-        mSpinnerEstatura.setAdapter(adapterEstatura);
+        mSpinnerPeso.setAdapter(AdapterPeso);
+        mSpinnerEstatura.setAdapter(AdapterEstatura);
     }
 
-    private void alertDialogCustom(String tittle,String message){
-        AlertDialog.Builder builder;
+    private void alertDialogCustom(String Tittle,String Message){
+        AlertDialog.Builder AlertBuilder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+            AlertBuilder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
         } else {
-            builder = new AlertDialog.Builder(this);
+            AlertBuilder = new AlertDialog.Builder(this);
         }
-        builder.setTitle(tittle)
-                .setMessage(message)
+        AlertBuilder.setTitle(Tittle)
+                .setMessage(Message)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // continue with delete
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)

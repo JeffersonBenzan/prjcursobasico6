@@ -14,8 +14,12 @@ Just clone the proyect and run it with Android Studio.
 
 ## Built With
 
-* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Android Studio](https://developer.android.com/studio/index.html?hl=es-419)
+
+## Versions
+
+* [V1.0](https://github.com/JeanCCV/prjcursobasico6/releases/tag/V1.0)
 
 ## Contributing
 
